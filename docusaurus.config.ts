@@ -24,10 +24,6 @@ const config: Config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  plugins: [[ require.resolve('docusaurus-lunr-search'), {
-    languages: ['en'] // language codes
-  }]],
-
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -83,73 +79,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    colorMode: {
-      defaultMode: 'dark',
-      respectPrefersColorScheme: true,
-    },
     image: 'img/social-embed.png',
-    navbar: {
-      title: 'Graphics Programming',
-      logo: {
-        alt: 'Graphics Programming',
-        src: 'img/gp-discord-logo.webp',
-      },
-      items: [
-        {
-          to: '/blog', 
-          label: 'Blog', 
-          position: 'left'
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'discordServer',
-          position: 'left',
-          label: 'Discord Server',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'communityProjects',
-          position: 'left',
-          label: 'Community Projects'
-        }
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Discord',
-              href: 'https://discord.com/invite/graphicsprogramming',
-            },
-            {
-              label: 'YouTube',
-              href: 'https://www.youtube.com/@graphicsprogramming9074',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://x.com/i/communities/1500963350825472000'
-            }
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'https://graphics-programming.org/',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/GraphicsProgramming',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Graphics Programming Discord. Built with Docusaurus.`,
-    },
     prism: {
       theme: prismThemes.duotoneLight,
       darkTheme: prismThemes.duotoneDark,
