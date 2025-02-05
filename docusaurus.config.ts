@@ -13,7 +13,7 @@ const config: Config = {
   url: 'https://graphicsprogramming.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/blog/',
 
   // GitHub pages deployment config.
   organizationName: 'GraphicsProgramming',
@@ -44,10 +44,7 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          routeBasePath: 'docs',
-          sidebarPath: './sidebars.ts',
-        },
+        docs: false,
         blog: {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
@@ -63,7 +60,7 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-          //routeBasePath: '/',
+          routeBasePath: '/',
           blogSidebarCount: 'ALL',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
