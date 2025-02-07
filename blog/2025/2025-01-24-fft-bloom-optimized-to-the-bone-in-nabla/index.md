@@ -11,7 +11,17 @@ last_update:
     author: Fletterio
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IvWbIPyqE0s?si=UYAO5G_5GIMXxY7Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/IvWbIPyqE0s?si=UYAO5G_5GIMXxY7Z"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 Described as "the most important numerical algorithm of our lifetime", the FFT has applications in a plethora of domains.
 
@@ -23,7 +33,17 @@ In this article I show how to run an FFT in Nabla, talk about different optimiza
 
 First, one must know what a Fourier Transform is. It's a clever way of decomposing periodic signals into their frequency components, essentially nothing more than an orthonormal change of basis. This might weird to think about, so here's a good intro to the topic by 3B1B:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/spUNpyF58BY?si=ZlJZDmq5fLnEkjnj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/spUNpyF58BY?si=ZlJZDmq5fLnEkjnj"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 Don't dwell too much on the continuous case because we're mostly interested in the [Discrete Fourier Transform](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) (DFT for short). It's a center piece of Digital Signal Processing. As a quick summary, the DFT is nothing but a change of basis in some vector space. Given a signal defined over some domain (spatial or temporal, usually), the "natural" representation of it is its "canonical basis decomposition" - which means mapping each point in space or time to the signal's value at that point. Thanks to Fourier, we have another very useful representation for the same signal, which involves its "spectral decomposition" - periodic functions defined over certain domains can always be written as a linear combination of some special orthogonal (w.r.t. some metric) functions over the same domain. 
 
@@ -39,13 +59,33 @@ Now you might be asking, why would I care about computing the DFT really fast? W
 
 The convolution of two signals $f$ and $g$, denoted by $f * g$, is a special type of product. My favourite way of reasoning about it (and one I have surprisingly very rarely come upon) is that it's just the superposition of many copies of $f$: for each point $x$ in your space, you take a copy of $f$ centered at $x$, $f(t-x)$ (as a function of a parameter $t$), and scale it by the value of $g$ at that point, $g(x)$, then sum all of these copies together. 3B1B again has a great introductory video, although he presents convolution in a more "standard" way, which is by sliding inverted copies of one signal over the other: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KuXjwB4LzSA?si=8Ma-72OlJ_m-0r3_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/KuXjwB4LzSA?si=8Ma-72OlJ_m-0r3_"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 [The Convolution Theorem](https://en.wikipedia.org/wiki/Convolution_theorem#Periodic_convolution) states that we can perform a (circular) convolution as a Hadamard (element-wise) product in the spectral domain. This means that convolution goes from an $O(nm)$ operation ($n$ being the number of pixels of a signal and $m$ being the number of pixels of a filter) down to $O(n \log n)$ (assuming $n \ge m$): You do Forward FFT, then Hadamard product, then Inverse FFT, with the FFTs being $O(n \log n)$ and the product being $O(n)$. For small filters the FFT convolution ends up being slower, but for larger ones the speedup is massive.
 
 Our Lead Build System and Test Engineer, Arkadiusz, has a Vulkanised talk giving a recap of the Convolution Theorem and the usage of the FFT in Nabla: 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=qmAz8XLshpGIKFr0&amp;start=271" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=qmAz8XLshpGIKFr0&amp;start=271"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 ## FFT Bloom
 
@@ -158,7 +198,17 @@ $M \cdot \mathcal F(K')$ of the matrix $M$ and the spectrum of the kernel $\math
 
 Once again, here's Arkadiusz talking about this:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=1ke5LgxKgDwQ-iEL&amp;start=513" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=1ke5LgxKgDwQ-iEL&amp;start=513"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 This has two important implications: first, that after performing the FFT of a real signal, we only need to store half of the values, since the other half are redundant. The values we store for a sequence of length $N$, for even $N$, are those indexed $0$ through $\frac N 2$, where the latter is commonly known as the Nyquist frequency. 
 
@@ -314,7 +364,17 @@ This allows us to keep a single copy of the spectrum resident in GPU memory, wit
 
 What we're doing here is essentially zooming out in the spatial domain by resampling the spectrum. Once again, Arkadiusz's video does give a bit of insight into this as well.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=dVlEwrkL2zm7s5Mi&amp;start=572" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+    <iframe 
+        src="https://www.youtube.com/embed/Ol_sHFVXvC0?si=dVlEwrkL2zm7s5Mi&amp;start=572"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+    />
+</div>
 
 Since we assume (and ir our Bloom example, require) the kernel to have PoT long sides (and square, but for this discussion it could also be rectangular) it turns out that `roundUpToPoT(imageDimensions+kernelDimensions)` is exactly an integer multiple of `kernelDimensions` 
 (of course, it might be a different multiple per axis). Let's assume   
