@@ -82,5 +82,17 @@
     "url": "https://www.devsh.eu/",
     "displayName": "DevSH Graphics Programming",
     "description": "Homepage of DevSH Graphics Programming: Computer Graphics, Computer Geometry & Vision and High Performance Computing Consultancy"
+  },
+  {
+    "name": "rafale25",
+    "url": "https://rafale25.dev/",
+    "displayName": "Rafale25",
+    "description": "Personal website where I share my projects"
+  },
+  {
+    "name": "sarah",
+    "url": "https://sarahshandcraftedentertainment.com/",
+    "displayName": "DethRaid",
+    "description": "Homepage of Sarah's Handcrafted Entertainment"
   }
 ]
