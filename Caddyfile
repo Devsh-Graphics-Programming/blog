@@ -1,0 +1,8 @@
+:3000 {
+    @root path /
+    redir @root /blog/ 308
+    handle_path /blog* {
+        root * /srv/blog
+        file_server
+    }
+}

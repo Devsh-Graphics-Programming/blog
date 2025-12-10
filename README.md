@@ -58,3 +58,8 @@ The Graphics Programming Blog - A collection of technical articles, project post
   ```
 
 - `http://localhost:3000` should open automatically
+
+## Production image
+- Build: `npm run build` produces the `build/` directory.
+- Final container copies only `build/` plus the Caddy service binary; there is no Node/npm runtime remaining, everything is pre-rendered.
+- Run in production with `--read-only` and `tmpfs` (e.g. `/tmp:size=32m`, `/config:size=32m`, `/data:size=32m`) so Caddy can keep its cache/autosave files while leaving the image immutable.
